@@ -8,6 +8,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>customer-portal Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	<properties>
+     <maven.compiler.source>1.8</maven.compiler.source>
+     <maven.compiler.target>1.8</maven.compiler.target>
+</properties>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -45,6 +49,30 @@
 
 	</dependencies>
 	<build>
-		<finalName>customer-portal</finalName>
-	</build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+         <groupId>com.spotify</groupId>
+         <artifactId>dockerfile-maven-plugin</artifactId>
+         <version>1.4.13</version>
+         <executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+                <configuration>
+					<repository>nistraining/customer-portal</repository>
+					<tag>${project.version}</tag>
+					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+				</configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

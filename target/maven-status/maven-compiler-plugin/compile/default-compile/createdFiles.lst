@@ -1,0 +1,5 @@
+com\customer\controller\UserRegistrationController.class
+com\customer\service\UserService.class
+com\customer\dao\UserDAO.class
+com\customer\model\User.class
+com\customer\controller\CustomerController.class
